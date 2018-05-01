@@ -1,6 +1,15 @@
 const path = require('path');
 const HTMLwp = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+
+const isProd = process.env.NODE_ENV === 'production';
+const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssProd = ExtractTextPlugin.extract({
+  fallback: 'style-loader',
+  use: ['css-loader', 'sass-loader']
+});
+const cssConfig = isProd ? cssProd : cssDev;
 
 module.exports = {
   entry: './src/index.js',
@@ -13,16 +22,14 @@ module.exports = {
     compress: true,
     port: 9000,
     stats: 'errors-only',
-    open: true
+    hot: true
+    // open: true
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+        use: cssConfig
       },
       {
         test: /\.js$/,
@@ -34,11 +41,15 @@ module.exports = {
   plugins: [
     new HTMLwp({
       title: 'Lalalalnd',
-      template: './src/my-index.html'
+      template: './src/index.html'
+      // filename: './../index.html'
       // minify: { collapseWhitespace: true }
     }),
     new ExtractTextPlugin({
-      filename: 'index.css'
-    })
+      filename: 'index.css',
+      disable: !isProd
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
   ]
 };
