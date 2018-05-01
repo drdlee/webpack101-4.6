@@ -8,7 +8,9 @@ module.exports = {
     filename: 'hasil.bundle.js'
   },
   module: {
-    rules: [{ test: /\.css$/, use: ['style-loader', 'css-loader'] }]
+    rules: [
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
+    ]
   },
   plugins: [
     new HTMLwp({
