@@ -1,3 +1,6 @@
 const css = require('./index.scss');
 
-console.log('Hello From app.js and webpack dev server');
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(<h1>Hello There</h1>, document.getElementById('root'));
