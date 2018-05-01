@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js prod
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js dev
 
 PATH: 
   C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\user\bin;C:\ProgramData\Oracle\Java\javapath;C:\Rtools\bin;C:\Rtools\mingw_32\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Common Files\Autodesk Shared;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Common Files\lenovo\easyplussdk\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\nodejs;C:\Program Files\MongoDB\Server\3.6\bin;C:\HashiCorp\Vagrant\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Yarn\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Local\atom\bin;C:\Users\user\AppData\Roaming\npm;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Heroku\bin;C:\Users\user\AppData\Roaming\Composer\vendor\bin;D:\Programming\HTML\flutter\flutter\bin;C:\Users\user\AppData\Local\Android\Sdk\platform-tools;C:\Users\user\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Microsoft VS Code\bin
@@ -28,6 +28,7 @@ npm manifest:
     "license": "ISC",
     "devDependencies": {
       "css-loader": "^0.28.11",
+      "extract-text-webpack-plugin": "^4.0.0-beta.0",
       "html-webpack-plugin": "^3.2.0",
       "mini-css-extract-plugin": "^0.4.0",
       "node-sass": "^4.9.0",
@@ -48,7 +49,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c webpack -p
+  Arguments: /d /s /c webpack -d
   Directory: D:\Programming\HTML\webpack101\1webpack0001
   Output:
   

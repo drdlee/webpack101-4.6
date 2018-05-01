@@ -1,6 +1,6 @@
 const path = require('path');
 const HTMLwp = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -12,12 +12,10 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          // 'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       }
     ]
   },
@@ -27,9 +25,8 @@ module.exports = {
       template: './src/my-index.html'
       // minify: { collapseWhitespace: true }
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+    new ExtractTextPlugin({
+      filename: 'index.css'
     })
   ]
 };
