@@ -1,5 +1,6 @@
 const path = require('path');
 const HTMLwp = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -9,14 +10,26 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          // 'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
     ]
   },
   plugins: [
     new HTMLwp({
       title: 'Lalalalnd',
-      template: './src/my-index.html',
-      minify: { collapseWhitespace: true }
+      template: './src/my-index.html'
+      // minify: { collapseWhitespace: true }
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     })
   ]
 };
